@@ -1,0 +1,367 @@
+---
+import type { ImageMetadata } from "astro";
+interface FeedbackSlide {
+  id: number;
+  avatar: string;
+  name: string;
+  feedback: string;
+  contact: string;
+}
+
+interface Props {
+  slides: FeedbackSlide[];
+}
+const { slides } = Astro.props;
+
+// Импортируем все изображения из папки feedback
+const imagesModule = await import("../../assets/images/feedback/index.js");
+const images: Record<string, ImageMetadata> =
+  imagesModule.default || imagesModule;
+
+let currentSlide = 0;
+
+// Функция для безопасного получения изображения
+const getAvatarImage = (avatarKey: string): ImageMetadata | null => {
+  return images[avatarKey] || null;
+};
+---
+
+<div class="carousel">
+  <div class="carousel__track" id="carouselTrack">
+    {
+      slides.map((slide, index) => {
+        const avatarImage = getAvatarImage(slide.avatar);
+
+        return (
+          <div class="carousel__item" data-index={index}>
+            {avatarImage ? (
+              <img
+                alt={`Аватар ${slide.name}`}
+                class="carousel__avatar"
+                src={avatarImage.src}
+                width={100}
+                height={100}
+                loading="lazy"
+              />
+            ) : (
+              <div class="carousel__avatar-placeholder">
+                {slide.name.charAt(0)}
+              </div>
+            )}
+
+            <h3 class="carousel__title">{slide.name}</h3>
+            <p class="carousel__text">{slide.feedback}</p>
+
+            {slide.contact && <p class="carousel__contact">{slide.contact}</p>}
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <!-- Индикаторы -->
+  <div class="carousel__indicators">
+    {
+      slides.map((_, index) => (
+        <button
+          class="carousel__dot"
+          data-index={index}
+          aria-label={`Перейти к слайду ${index + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline>
+  // Функции должны быть в глобальной области видимости
+  window.scrollToCenter = function (index) {
+    const track = document.getElementById("carouselTrack");
+    const items = track.querySelectorAll(".carousel__item");
+    const item = items[index];
+
+    if (!item) return;
+
+    const itemLeft = item.offsetLeft;
+    const containerWidth = track.offsetWidth;
+    const itemWidth = item.offsetWidth;
+
+    // Центрирование блока
+    const scrollPosition = itemLeft - (containerWidth - itemWidth) / 2;
+
+    track.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
+
+    updateIndicators(index);
+  };
+
+  function updateIndicators(activeIndex) {
+    const indicators = document.querySelectorAll(".carousel__dot");
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle("_active", index === activeIndex);
+    });
+  }
+
+  // Автоопределение активного слайда при скролле
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("carouselTrack");
+    const items = track.querySelectorAll(".carousel__item");
+    const indicators = document.querySelectorAll(".carousel__dot");
+
+    // Добавляем обработчики клика на индикаторы
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        scrollToCenter(index);
+      });
+    });
+
+    // Добавляем обработчики клика на блоки
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        scrollToCenter(index);
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let mostVisibleIndex = 0;
+        let maxVisibility = 0;
+
+        items.forEach((item, index) => {
+          const rect = item.getBoundingClientRect();
+          const trackRect = track.getBoundingClientRect();
+
+          // Вычисляем видимую область
+          const visibleWidth =
+            Math.min(rect.right, trackRect.right) -
+            Math.max(rect.left, trackRect.left);
+          const visibleRatio = visibleWidth / rect.width;
+
+          if (visibleRatio > maxVisibility) {
+            maxVisibility = visibleRatio;
+            mostVisibleIndex = index;
+          }
+        });
+
+        updateIndicators(mostVisibleIndex);
+      },
+      {
+        root: track,
+        threshold: [0.1, 0.5, 0.9],
+      }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  });
+</script>
+
+<style>
+
+  .item-number {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(var(--color-white), 0.9);
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  /* Индикаторы */
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .indicator:hover {
+    background: #aaa;
+  }
+
+  .indicator.active {
+    background: #4ecdc4;
+  }
+
+  /* Адаптивность */
+
+  @media (max-width: 768px) {
+    .carousel__track {
+      gap: 20px;
+    }
+
+    .item-content {
+      padding: 1.5rem;
+    }
+
+    .item-content h3 {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel__track {
+      gap: 15px;
+    }
+
+    .carousel-indicators {
+      gap: 8px;
+    }
+
+    .indicator {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  /* Поддержка тач-устройств */
+  @media (hover: none) and (pointer: coarse) {
+    .carousel-item:hover {
+      transform: none;
+    }
+
+    .carousel__track {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+
+<style lang="sass">
+  .carousel
+    position: relative
+    max-width: 100vw
+
+    &__track
+      display: flex
+      gap: 25px
+      overflow-x: auto
+      scroll-behavior: smooth
+      scroll-snap-type: x mandatory
+      padding: 0 2rem
+      /* Стилизованный скроллбар */
+      scrollbar-width: none
+      height: auto
+      align-items: stretch
+
+    &__item
+      flex: 0 0 80vw
+      height: auto
+      border-radius: min(16px, 2vw)
+      scroll-snap-align: center
+      position: relative
+      cursor: pointer
+      background: var(--color-white-disable)
+      backdrop-filter: blur(10px)
+      border: 1px solid var(--color-white-light)
+      box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.4)
+      display: flex
+      flex-direction: column
+      align-items: center
+      gap: min(25px, 3vw)
+      padding: min(30px, 5vw)
+
+    &__avatar
+      width: min(100px, 20vw)
+      height: min(100px, 20vw)
+      border-radius: 50%
+      object-fit: cover
+
+    &__title
+      font-weight: 400
+      line-height: 1.3
+      text-align: start
+      font-size: min(32px, 6vw)
+      color: var(--color-white)
+      margin: 0
+
+    &__text
+      font-weight: 300
+      line-height: 1.3
+      text-align: start
+      font-size: min(18px, 3.5vw)
+      color: var(--color-white)
+      margin: 0
+
+    &__contact
+      text-align: end
+      font-size: min(18px, 4vw)
+      color: var(--color-white)
+      margin: auto 0 0
+      align-self: flex-end
+
+    &__indicators
+      display: flex
+      gap: 10px
+      justify-content: center
+      margin-top: min(50px, 5vw)
+
+    &__dot
+      border: none
+      background: var(--color-white-disable)
+      width: 8px
+      height: 8px
+      border-radius: 4px
+      padding: 0
+      transition: all 0.5s ease
+      cursor: pointer
+
+      &._active
+        background: var(--color-white)
+        transition: all 0.5s ease
+
+    /* Стили для кастомных кнопок навигации */
+    .carousel__prev,
+    .carousel__next
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      width: 50px
+      height: 50px
+      background: rgba(255, 255, 255, 0.2)
+      border: none
+      border-radius: 50%
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      transition: all 0.3s ease
+
+      &:hover
+        background: var(--color-white, 0.3)
+
+      &::disabled
+        opacity: 0.5
+        cursor: not-allowed
+
+    .carousel__prev
+      left: 10px
+
+    .carousel__next
+      right: 10px
+
+  /* Адаптивность */
+  @media (max-width: 768px)
+    .carousel__prev,
+    .carousel__next
+      width: 40px
+      height: 40px
+</style>

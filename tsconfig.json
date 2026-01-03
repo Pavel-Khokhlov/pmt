@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    // Enable top-level await, and other modern ESM features.
+    "target": "ESNext",
+    "module": "ESNext",
+    // Enable node-style module resolution, for things like npm package imports.
+    "moduleResolution": "node",
+    // Enable JSON imports.
+    "resolveJsonModule": true,
+    // Enable stricter transpilation for better output.
+    "isolatedModules": true,
+    // Astro will directly run your TypeScript code, no transpilation needed.
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": false,
+    "types": ["@astrojs/vue/client"],
+    "paths": {
+      "@c/*": ["src/components/*"],
+      "@e/*": ["src/elements/*"],
+      "@a/*": ["src/assets/*"],
+      "@l/*": ["src/layouts/*"],
+      "@h/*": ["src/helpers/*"],
+      "@r/*": ["src/routes/*"],
+      "@p/*": ["src/plugins/*"],
+      "@d/*": ["src/data/*"],
+      "@s/*": ["src/style/*"],
+      "@al/*": ["./public/assets/locales/*"], 
+      "@/*": ["src/*"]
+    }
+  },
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+}

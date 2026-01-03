@@ -1,0 +1,195 @@
+---
+import certificate from "@a/images/diplomas/certificate.webp";
+import pravilo from "@a/images/diplomas/pravilo.webp";
+import trigger from "@a/images/diplomas/trigger.webp";
+import kinezio from "@a/images/diplomas/kinezio.webp";
+import veniki from "@a/images/diplomas/veniki.webp";
+import perkucia from "@a/images/diplomas/perkucia.webp";
+// Создаем массив всех изображений
+const slides = [
+  { id: 1, src: certificate.src, alt: "Сертификат" },
+  { id: 2, src: kinezio.src, alt: "Диплом по кинезиологии" },
+  { id: 3, src: pravilo.src, alt: "Правило" },
+  { id: 4, src: trigger.src, alt: "Триггерная терапия" },
+  { id: 5, src: veniki.src, alt: "Веники" },
+  { id: 6, src: perkucia.src, alt: "Перкуссия" },
+];
+---
+
+<div id="modal-slider" class="modal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <button class="modal__close">&times;</button>
+    <div class="slider">
+      <div class="slider__container">
+        {
+          slides.map((slide, index) => (
+            <div class="slider__slide" data-slide-index={slide.id}>
+              <img src={slide.src} alt={slide.alt} class="slider__image" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="slider__indicators">
+      <button class="slider__nav slider__nav--prev">&larr;</button>
+      {
+        slides.map((slide, index) => (
+          <button
+            class={`slider__indicator ${index === 0 ? "active" : ""}`}
+            data-slide-index={index}
+          />
+        ))
+      }
+      <button class="slider__nav slider__nav--next">&rarr;</button>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(1px);
+    }
+
+    &__content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: min(40px, 2vw);
+      box-sizing: border-box;
+    }
+
+    &__close {
+      position: absolute;
+      top: min(20px, 3vw);
+      right: min(20px, 3vw);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    @media (max-width: 768px) {
+      height: 60vh;
+    }
+
+    &__container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    &__slide {
+      width: 100%;
+      height: 100%;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &__nav {
+      width: min(40px, 9vw);
+      height: min(40px, 9vw);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: min(20px, 4vw);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+      margin: 0 min(100px, 10vw);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    &__indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    &__indicator {
+      width: 10px;
+      height: 10px;
+      border-width: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.active {
+        background: white;
+      }
+    }
+  }
+</style>

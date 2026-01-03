@@ -1,0 +1,115 @@
+---
+import ScrollIndicator from "../elements/ScrollIndicator.astro";
+import Navigation from "./Navigation.astro";
+---
+
+<header class="header" id="header">
+  <div class="header__wrapper">
+    <ScrollIndicator />
+    <h2 class="header__logo">П</h2>
+    <Navigation :isOpen="true" location="_header" />
+    <div class="burger" data-action="burger" data-a="click,menu,hamburger">
+    </div>
+  </div>
+  <div class="burger-menu">
+    <Navigation id="burger-nav" location="_modal" />
+  </div>
+</header>
+
+<script>
+  const $body = document.querySelector(".body");
+  const $burger = document.querySelector("[data-action=burger]");
+  const $menu = document.querySelector(".burger-menu");
+
+  $burger &&
+    $burger.addEventListener("click", () => {
+      $body && $body.classList.toggle("_unscroll");
+      $burger && $burger.classList.toggle("_active");
+      $menu && $menu.classList.toggle("_opened");
+    });
+</script>
+
+<style lang="sass" is:global>
+  @use "/src/assets/scss/entry.scss"
+  .header
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    z-index: 1000
+    &__wrapper
+      height: min(70px, 12vw)
+      position: relative
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 0 min(150px, 4vw)
+      z-index: 100
+      background: var(--color-white-opacity)
+      box-sizing: border-box
+      border-bottom: 0.5px solid var(--color-black)
+    &__logo
+      font-family: 'PacificoRegular', cursive, sans-serif
+      font-weight: 700
+      font-size: min(25px, 10vw)
+      margin: 0
+      padding: 0
+      color: var(--color-black)
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      // backdrop-filter: blur(6px)
+      z-index: -1
+  .burger
+    display: block
+    position: relative
+    width: 30px
+    height: 15px
+    border: none
+    background: transparent
+    cursor: pointer
+    @media screen and (min-width: 768px)
+      display: none
+    &::before
+      content: ""
+      width: 100%
+      position: absolute
+      top: 0
+      left: 0
+      height: 1px
+      background: rgb(52, 34, 34)
+      transition: var(--app-transition)
+    &._active::before
+      top: 7px
+      transform: rotate(-45deg)
+    &::after
+      content: ""
+      width: 100%
+      position: absolute
+      bottom: 0
+      right: 0
+      height: 1px
+      background: rgb(52, 34, 34)
+      transition: var(--app-transition)
+    &._active::after
+      bottom: 7px
+      transform: rotate(45deg)
+    &-menu
+      position: absolute
+      width: 100vw
+      height: 45vh
+      top: -200vh
+      left: 0
+      background: var(--color-white)
+      transition: var(--app-transition)
+      z-index: 99
+      opacity: 0
+      &._opened
+        top: 0
+        opacity: 1
+        transition: var(--app-transition)
+</style>

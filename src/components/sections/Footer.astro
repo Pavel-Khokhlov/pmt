@@ -1,0 +1,30 @@
+---
+import { version } from "../../../package.json";
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const startYear = 2016;
+
+const versionStr = "Version:" + version;
+
+function getCopyrightText() {
+  return "@ " + startYear + "-" + currentYear + " Studio77";
+}
+---
+
+<section class="footer">
+  <p class="footer__text">{getCopyrightText}</p>
+  <p class="footer__text">{versionStr}</p>
+</section>
+
+<style lang="sass" is:global>
+  .footer
+    padding: 20px 0
+    width: min(1024px, 94vw)
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    &__text
+      font-size: min(14px, 3vw)
+      line-height: 1.2
+      color: var(--color-black)
+</style>

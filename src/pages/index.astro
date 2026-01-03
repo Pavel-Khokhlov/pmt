@@ -1,0 +1,44 @@
+---
+import Layout from "@l/Layout.astro";
+import Header from "@c/sections/Header.astro";
+import First from "@c/sections/First.astro";
+import About from "@c/sections/About.astro";
+import Certificates from "@c/sections/Certificates.astro";
+import Feedback from "@c/sections/Feedback.astro";
+import Faq from "@c/sections/Faq.astro";
+import Footer from "@c/sections/Footer.astro";
+import Jobs from "@c/sections/Jobs.astro";
+---
+
+<Layout>
+  <Header />
+  <First />
+  <About />
+  <Jobs />
+  <Certificates />
+  <Feedback />
+  <Faq />
+  <Footer />
+</Layout>
+
+<style lang="sass" is:global>
+  .section
+    position: relative
+    padding: min(70px, 5vw) 0
+
+    &__title
+      font-size: min(36px, 7vw)
+      line-height: 1.4
+      font-weight: 600
+      color: var(--color-white)
+      text-align: center
+      margin: 0 0 min(40px, 5vw)
+    &__subtitle
+      width: min(600px, 90vw)
+      margin: 0 auto min(40px, 8vw)
+      font-weight: 300
+      line-height: 1.3
+      text-align: start
+      font-size: min(18px, 3.5vw)
+      color: var(--color-white)
+</style>

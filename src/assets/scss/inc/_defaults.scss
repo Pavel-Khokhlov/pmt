@@ -1,0 +1,70 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css");
+
+:root {
+  --color-brand: rgba(111, 45, 168, 1);
+  --color-black: rgba(24, 24, 24, 1);
+  --color-white: rgba(254, 254, 250, 1);
+  --color-floral: rgba(254, 254, 250, 1);
+  --color-brown: rgba(84, 11, 14, 1);
+  --color-bronze: rgba(205, 127, 50, 1);
+  --color-brown-light: rgba(89, 39, 32, 0.6);
+  --color-white-opacity: rgba(255, 255, 255, 0.9);
+  --color-white-light: rgba(255, 255, 255, 0.4);
+  --color-white-disable: rgba(255, 255, 255, 0.2);
+  --color-white-smoke: rgba(245, 245, 245, 1);
+  --color-molten-orange: rgba(240, 74, 0, 0.6);
+  --color-grey: rgba(85, 85, 85, 0.4);
+  --color-grey-light: rgba(85, 85, 85, 0.05);
+  --gd-nightdive: linear-gradient(90deg, #020344, #28B8D5);
+  --gd-icenight: linear-gradient(90deg, #E4E7E4, #0A1647);
+  --gd-electricsky: linear-gradient(90deg, #456FE8, #19B0EC);
+  --gd-marinemint: linear-gradient(90deg, #2FEAA8, #028CF3);
+  --gd-brown: linear-gradient(90deg, var(--color-brown), var(--color-bronze));
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+}
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--birka-gray);
+  font-size: 16px;
+  line-height: 1.5;
+  // background-color: var(--birka-dark);
+  scroll-behavior: smooth;
+
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+div.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  @media screen and (max-width: 480px) {
+    padding: 0 10px;
+  }
+}

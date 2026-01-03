@@ -1,0 +1,103 @@
+---
+import menuLinks from "@d/menu.js";
+
+// Props
+const { location = "_modal" } = Astro.props;
+---
+
+<nav class={`nav ${location}`}>
+  <ul class={`nav__list ${location}`}>
+    {
+      menuLinks.map((link: any) => (
+        <li>
+          <a
+            id={link.path}
+            href={typeof link.path === "object" ? "#service" : link.path}
+            class={`nav__link ${location}`}
+          >
+            {link.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<!-- Script -->
+<script>
+  const $linksArr = document.querySelectorAll(".nav__link._modal");
+  const handleClickLink = () => {
+    const $burger = document.querySelector(".burger");
+    $burger && $burger.classList.toggle("_active");
+    const $menu = document.querySelector(".burger-menu");
+    $menu && $menu.classList.toggle("_opened");
+    const $body = document.querySelector(".body");
+    $body && $body.classList.toggle("_unscroll");
+  };
+  $linksArr.forEach((l) => l.addEventListener("click", handleClickLink));
+</script>
+
+<!-- Styles -->
+<style lang="sass">
+  .nav
+    position: relative
+    top: 20vw
+    left: -100vw
+    opacity: 0
+    transition: var(--app-transition05)
+    &._modal
+      left: 0px
+      opacity: 1
+      &._active
+        opacity: 1
+    &._active
+      transition: var(--app-transition05)
+      transition-delay: 0.5s
+      left: 5vw
+      opacity: 1
+
+    &._header
+      top: 0
+      left: 0
+      opacity: 1
+      @media screen and (max-width: 768px)
+        display: none
+
+    &__list
+      position: relative
+      padding: 0
+      list-style: none
+      display: flex
+
+      &._header
+        flex-direction: row
+        gap: min(30px, 3vw)
+
+      &._modal
+        flex-direction: column
+        gap: 6vw
+        left: 0
+        opacity: 1
+
+    &__link
+      font-family: "RobotoCondensed", cursive, sans-serif
+      font-size: min(30px, 6vw)
+      font-weight: 400
+      text-decoration: none
+      color: var(--birka-black)
+      cursor: pointer
+      padding: 20px
+
+      &._header
+        padding: 20px 0
+        font-size: min(18px, 7vw)
+
+    &__button
+      font-family: "RobotoCondensed"
+      font-size: min(18px, 7vw)
+      font-weight: 400
+      padding: 0
+      border: none
+      background: transparent
+      cursor: pointer
+</style>

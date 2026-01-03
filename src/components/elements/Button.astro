@@ -1,0 +1,41 @@
+---
+const { type } = Astro.props;
+---
+
+<a class={`button ${type && `button__${type}`}`} {...Astro.props}>
+  <slot />
+</a>
+
+<style lang="sass" is:global>
+  .button
+    background: var(--birka-gradient)
+    padding: 10px 50px
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+    border-radius: 100px
+    font-weight: 700
+    cursor: pointer
+    user-select: none
+    display: inline-block
+    color: #fff
+    text-decoration: none
+    font-size: 18px
+    &__main
+      font-size: min(34px, 5vw)
+      // Полупрозрачный белый фон для основы эффекта
+      background: rgba(255, 255, 255, 0.15)
+
+      // Главное свойство: размытие фона позади элемента
+      backdrop-filter: blur(10px)
+      // Префикс для поддержки в Safari
+      -webkit-backdrop-filter: blur(10px)
+
+      // Дополнительные стили для реалистичности
+      border: 1px solid rgba(255, 255, 255, 0.2)
+      border-radius: min(16px, 3vw)
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1)
+      transition: all 0.3s ease
+      &:hover
+        transition: all 0.3s ease
+        transform: scale(1.05)
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3)
+</style>

@@ -1,0 +1,60 @@
+---
+import Button from "@c/elements/Button.astro";
+---
+
+<section class="section _first" id="main">
+  <aside class="main">
+    <Button type="main">{"Массаж"}</Button>
+    <Button type="main">{"Кинезиотейпирование"}</Button>
+    <Button type="main">{"Гвоздестояние"}</Button>
+  </aside>
+</section>
+
+<style lang="sass" is:global>
+  .section
+    &._first
+      display: block
+      width: 100vw
+      height: 100vh
+      background: url('/assets/images/background/mainV.webp')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      box-sizing: border-box
+      padding: 0
+      // Фон по умолчанию для портретной ориентации
+      background-image: url('/assets/images/background/mainV.webp')
+      
+      // Медиа-запрос для альбомной ориентации
+      @media (orientation: landscape) and (min-width: 601px)
+        background-image: url('/assets/images/background/mainH.webp')
+      
+      // Для мобильных устройств можно добавить дополнительные проверки
+      @media (max-aspect-ratio: 3/4)
+        // Соотношение сторон как у смартфона
+        background-image: url('/assets/images/background/mainV.webp')
+      
+      @media (min-aspect-ratio: 4/3)
+        // Соотношение сторон как у планшета/десктопа
+        background-image: url('/assets/images/background/mainH.webp')
+      &__text
+        font-size: min(14px, 3vw)
+        line-height: 1.2
+        color: var(--color-black)
+  .main
+    width: 40%
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: min(32px, 5vw)
+    padding: 20px
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent)
+    @media (max-width: 600px)
+      width: 100%
+      height: 30%
+      position: absolute
+      bottom: 0
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))
+</style>

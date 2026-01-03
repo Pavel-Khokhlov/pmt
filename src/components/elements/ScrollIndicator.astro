@@ -1,0 +1,54 @@
+<div class="scroll"></div>
+
+<style lang="sass">
+  .scroll
+    position: fixed
+    top: 0
+    left: 0
+    height: 2px
+    background: var(--color-brown)
+    width: 0
+    z-index: 1000
+</style>
+
+<script is:inline>
+  // Тип для TypeScript (если используется)
+  /** @type {HTMLElement & { style: CSSStyleDeclaration }} */
+  let ScrollElement;
+
+  let scrollWidth = 0;
+
+  const handleScroll = () => {
+    const scrollHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+
+    const maxScrollableHeight = scrollHeight - window.innerHeight;
+    if (maxScrollableHeight <= 0) return;
+
+    const scrollY = window.scrollY || window.pageYOffset;
+    const position = (scrollY / maxScrollableHeight) * 100;
+    scrollWidth = position;
+
+    const scrollElement = document.querySelector(".scroll");
+    if (scrollElement) {
+      scrollElement.style.width = `${scrollWidth}vw`;
+    }
+  };
+
+  // Инициализация
+  document.addEventListener("DOMContentLoaded", () => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  // Для Astro SPA-навигации
+  document.addEventListener("astro:after-swap", () => {
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>

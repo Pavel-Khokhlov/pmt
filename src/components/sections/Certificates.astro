@@ -1,0 +1,103 @@
+---
+// import diplomas from "@d/dataDiplomas";
+//import images from "@a/images/diplomas/thumb";
+import CertificateModal from "@c/elements/CertificateModal.astro";
+import certificate from "@a/images/diplomas/thumb/certificate.webp";
+import pravilo from "@a/images/diplomas/thumb/pravilo.webp";
+import trigger from "@a/images/diplomas/thumb/trigger.webp";
+import kinezio from "@a/images/diplomas/thumb/kinezio.webp";
+import veniki from "@a/images/diplomas/thumb/veniki.webp";
+import perkucia from "@a/images/diplomas/thumb/perkucia.webp";
+// Создаем массив всех изображений
+const diplomas = [
+  { id: 1, src: certificate.src, alt: "Сертификат" },
+  { id: 2, src: kinezio.src, alt: "Диплом по кинезиологии" },
+  { id: 3, src: pravilo.src, alt: "Правило" },
+  { id: 4, src: trigger.src, alt: "Триггерная терапия" },
+  { id: 5, src: veniki.src, alt: "Веники" },
+  { id: 6, src: perkucia.src, alt: "Перкуссия" },
+];
+---
+
+<section class="section _certificates">
+  {
+    diplomas.map((d, index) => {
+      return (
+        <button
+          id={String(d.id)}
+          class="diploma"
+          name={d.alt}
+          style={
+            d.src
+              ? {
+                  backgroundImage: `url(${d.src})`,
+                }
+              : {}
+          }
+        />
+      );
+    })
+  }
+</section>
+
+<CertificateModal />
+
+<script>
+  import { ModalSlider } from "../elements/modalSlider";
+
+  let slider: ModalSlider | null = null;
+
+  // Инициализируем после полной загрузки DOM
+  document.addEventListener("DOMContentLoaded", () => {
+    // Создаем экземпляр слайдера
+    slider = new ModalSlider();
+
+    // Находим все кнопки дипломов
+    const buttons = document.querySelectorAll(".diploma");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const btn = button as HTMLButtonElement;
+        console.log("Кнопка активирована", btn.id);
+
+        // Определяем индекс слайда из data-атрибута или id
+        const slideIndex = Number(btn.id) - 1;
+
+        // Открываем слайдер с правильным индексом
+        if (slider) {
+          slider.open(Number(slideIndex));
+        }
+      });
+    });
+  });
+</script>
+
+<style lang="sass">
+  .section
+    &._certificates
+      width: 100%
+      display: flex
+      flex-direction: row
+      justify-content: center
+      gap: min(20px, 3vw)
+      overflow: auto
+      padding: min(70px, 5vw) min(40px, 3vw)
+      @media (max-width: 768px)
+        justify-content: flex-start
+  .diploma
+    border: none
+    background: transparent
+    width: min(100px, 16vw)
+    height: min(100px, 16vw)
+    border-radius: min(10px, 2vw)
+    background-position: center
+    background-size: cover
+    padding: 0
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
+    cursor: pointer
+    flex-shrink: 0
+    transition: all 0.5s ease
+    &:hover
+      box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4)
+      transform: scale(1.05)
+</style>

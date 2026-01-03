@@ -1,0 +1,417 @@
+---
+const jobs = [
+  {
+    id: 42042,
+    time: "11.2024 - 10.2025",
+    place: "World Class",
+  },
+  {
+    id: 42022,
+    time: "04.2022 - 06.2024",
+    place: "Термы",
+  },
+  {
+    id: 82021,
+    time: "08.2021 - 03.2023",
+    place: "Vertex",
+  },
+  {
+    id: 22020,
+    time: "02.2020 - 06.2021",
+    place: "IronFitness",
+  },
+  {
+    id: 82019,
+    time: "08.2019 - 03.2020",
+    place: "Ohana",
+  },
+  {
+    id: 22019,
+    time: "02.2019 - 05.2021",
+    place: "Gretta",
+  },
+  {
+    id: 102016,
+    time: "10.2016 - 05.2018",
+    place: "Возрождение",
+  },
+];
+---
+
+<section class="section _jobs">
+  {
+    jobs.map((job, index) => {
+      return (
+        <div class="job__wrapper">
+          <div class="job__outside">
+            <h3 class="job__index">{index + 1}</h3>
+            <div class="job__inside">
+              <h3 class="job__title">{job.place}</h3>
+              <p class="job__date">{job.time}</p>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</section>
+
+<style lang="scss">
+  /* Основные стили секции */
+  .section {
+    &._jobs {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 10px 40px 0;
+      position: relative;
+      overflow-x: auto;
+      overflow-y: visible;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        height: 8px;
+        background: var(--gd-brown);
+        border-radius: 4px;
+        z-index: 5;
+      }
+    }
+  }
+
+  /* Обертка для каждого элемента работы */
+  .job {
+    &__wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+      transition: all 0.3s ease;
+      z-index: 5;
+      &:hover .job__date {
+        transition: all 0.3s ease;
+        background: var(--color-brown);
+        color: white;
+        border-color: var(--color-brown);
+      }
+      &:hover .job__index {
+        transition: all 0.3s ease;
+        background: var(--color-brown);
+        color: white;
+        // transform: scale(1.1);
+        // box-shadow: 0 0 20px rgba(52, 152, 219, 0.4);
+      }
+      &:hover .job__inside {
+        transition: all 0.3s ease;
+        transform: translateY(-5px);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+    &__outside {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    &__index {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      background: white;
+      border: 2px solid var(--color-brown);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-weight: 700;
+      color: var(--color-brown);
+      font-size: 14px;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    &__inside {
+      width: 100%;
+      max-width: 180px;
+      padding: 20px 10px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--color-brown);
+      transition: all 0.3s ease;
+      position: relative;
+      text-align: center;
+      margin-bottom: 15px;
+      order: 0;
+    }
+    &__title {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-brown);
+      margin: 0 0 8px 0;
+      line-height: 1.3;
+    }
+    &__date {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 12px;
+      color: var(--color-grey);
+      margin: 0;
+      font-weight: 700;
+      background: var(--color-grey-light);
+      padding: min(6px, 1.4vw);
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+      text-align: center;
+      width: 100%;
+      transition: all 0.3s ease;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 27px;
+        background: var(--color-brown);
+      }
+    }
+  }
+
+  /* Вертикальная версия для мобильных */
+  @media (max-width: 1100px) {
+    .section {
+      width: min(600px, 100vw);
+      &._jobs {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 15px 10px;
+        overflow-x: visible;
+        overflow-y: auto;
+
+        /* Убираем горизонтальную линию */
+        &::before {
+          display: none;
+        }
+        /* Вертикальная линия для мобильной версии */
+        &::after {
+          content: "";
+          position: absolute;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 6px;
+          height: 88%;
+          background: linear-gradient(to top, var(--color-brown), var(--color-bronze));
+          border-radius: 3px;
+          z-index: 1;
+        }
+      }
+    }
+
+    .job__wrapper {
+      flex: none;
+      width: 100%;
+      padding: 0;
+      &:hover .job__index {
+        // transform: scale(1);
+      }
+      &:hover .job__inside {
+        transform: translateY(0px);
+      }
+      &:nth-child(odd) {
+        align-items: flex-start;
+        padding-right: 50%;
+      }
+      /* Чередование сторон для мобильной версии */
+      &:nth-child(even) {
+        align-items: flex-end;
+        padding-left: 50%;
+      }
+      &:nth-child(odd) .job__index {
+        right: auto;
+        left: 50%;
+        margin-top: -10px;
+      }
+      &:nth-child(even) .job__index {
+        left: 50%;
+        right: auto;
+        margin-top: -10px;
+      }
+      &:nth-child(odd) .job__inside {
+        text-align: left;
+        margin-top: -10px;
+      }
+      &:nth-child(even) .job__inside {
+        text-align: right;
+        margin-top: -10px;
+      }
+      &:nth-child(odd) .job__date {
+        text-align: left;
+      }
+      &:nth-child(even) .job__date {
+        text-align: right;
+      }
+      &:nth-child(odd) .job__title {
+        margin: 0 0 8px min(6px, 1.4vw);
+      }
+      &:nth-child(even) .job__title {
+        margin: 0 min(6px, 1.4vw) 8px 0;
+      }
+    }
+
+    .job__outside {
+      width: 90%;
+      max-width: 300px;
+    }
+
+    .job__index {
+      position: absolute;
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      transform: translateX(-50%);
+      top: -11px;
+      z-index: 3;
+    }
+
+    /* Убираем стрелку в мобильной версии */
+    .job__inside::after {
+      display: none;
+    }
+
+    /* Перемещаем дату и место работы для мобильной версии */
+    .job__inside {
+      order: 0;
+      margin-bottom: 0;
+      max-width: 100%;
+      text-align: left;
+      padding: 10px 10px;
+    }
+
+    .job__date {
+      min-width: auto;
+      text-align: left;
+    }
+
+    /* Убираем вертикальные линии в мобильной версии */
+    .job__date::before {
+      display: none;
+    }
+
+    /* Стрелки для мобильной версии от линии к элементам */
+    .job__wrapper:nth-child(odd)::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: calc(50% + 3px);
+      width: calc(50% - 25px);
+      height: 1px;
+      background: var(--color-brown);
+      z-index: 0;
+    }
+
+    .job__wrapper:nth-child(even)::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: calc(50% + 3px);
+      width: calc(50% - 25px);
+      height: 1px;
+      background: var(--color-brown);
+      z-index: 0;
+    }
+  }
+
+  /* Анимация появления элементов */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInHorizontal {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .job__wrapper {
+    animation: fadeInHorizontal 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  /* Анимация для мобильной версии */
+  @media (max-width: 768px) {
+    .job__wrapper {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  }
+
+  .job__wrapper:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .job__wrapper:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .job__wrapper:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .job__wrapper:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .job__wrapper:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .job__wrapper:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  .job__wrapper:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+
+  /* Стили для скроллбара в веб-версии */
+  @media (min-width: 769px) {
+    .section._jobs::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .section._jobs::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .section._jobs::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 4px;
+    }
+
+    .section._jobs::-webkit-scrollbar-thumb:hover {
+      background: #2980b9;
+    }
+  }
+</style>

@@ -80,7 +80,7 @@ const $$About = createComponent(($$result, $$props, $$slots) => {
 </p> </div> </section> `;
 }, "/Users/macbook/dev/MY/massage-astro/src/components/sections/About.astro", void 0);
 
-const certificate$1 = new Proxy({"src":"/pmt/_astro/certificate.C5u8wvgI.webp","width":1000,"height":741,"format":"webp"}, {
+const certificate$1 = new Proxy({"src":"/_astro/certificate.C5u8wvgI.webp","width":1000,"height":741,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -93,7 +93,7 @@ const certificate$1 = new Proxy({"src":"/pmt/_astro/certificate.C5u8wvgI.webp","
 						}
 					});
 
-const pravilo$1 = new Proxy({"src":"/pmt/_astro/pravilo.DCRbV3UK.webp","width":959,"height":683,"format":"webp"}, {
+const pravilo$1 = new Proxy({"src":"/_astro/pravilo.DCRbV3UK.webp","width":959,"height":683,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -106,7 +106,7 @@ const pravilo$1 = new Proxy({"src":"/pmt/_astro/pravilo.DCRbV3UK.webp","width":9
 						}
 					});
 
-const trigger$1 = new Proxy({"src":"/pmt/_astro/trigger.N7hgno6S.webp","width":1000,"height":773,"format":"webp"}, {
+const trigger$1 = new Proxy({"src":"/_astro/trigger.N7hgno6S.webp","width":1000,"height":773,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -119,7 +119,7 @@ const trigger$1 = new Proxy({"src":"/pmt/_astro/trigger.N7hgno6S.webp","width":1
 						}
 					});
 
-const kinezio$1 = new Proxy({"src":"/pmt/_astro/kinezio.r31LTkh6.webp","width":1000,"height":717,"format":"webp"}, {
+const kinezio$1 = new Proxy({"src":"/_astro/kinezio.r31LTkh6.webp","width":1000,"height":717,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -132,7 +132,7 @@ const kinezio$1 = new Proxy({"src":"/pmt/_astro/kinezio.r31LTkh6.webp","width":1
 						}
 					});
 
-const veniki$1 = new Proxy({"src":"/pmt/_astro/veniki.BLeCDX7r.webp","width":665,"height":1000,"format":"webp"}, {
+const veniki$1 = new Proxy({"src":"/_astro/veniki.BLeCDX7r.webp","width":665,"height":1000,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -145,7 +145,7 @@ const veniki$1 = new Proxy({"src":"/pmt/_astro/veniki.BLeCDX7r.webp","width":665
 						}
 					});
 
-const perkucia$1 = new Proxy({"src":"/pmt/_astro/perkucia.D9gRuwOe.webp","width":714,"height":1000,"format":"webp"}, {
+const perkucia$1 = new Proxy({"src":"/_astro/perkucia.D9gRuwOe.webp","width":714,"height":1000,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -170,7 +170,7 @@ const $$CertificateModal = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div id="modal-slider" class="modal"> <div class="modal__overlay"></div> <div class="modal__content"> <button class="modal__close">&times;</button> <div class="slider"> <div class="slider__container"> ${slides.map((slide, index) => renderTemplate`<div class="slider__slide"${addAttribute(slide.id, "data-slide-index")}> <img${addAttribute(slide.src, "src")}${addAttribute(slide.alt, "alt")} class="slider__image"> </div>`)} </div> </div> <div class="slider__indicators"> <button class="slider__nav slider__nav--prev">&larr;</button> ${slides.map((slide, index) => renderTemplate`<button${addAttribute(`slider__indicator ${index === 0 ? "active" : ""}`, "class")}${addAttribute(index, "data-slide-index")}></button>`)} <button class="slider__nav slider__nav--next">&rarr;</button> </div> </div> </div> `;
 }, "/Users/macbook/dev/MY/massage-astro/src/components/elements/CertificateModal.astro", void 0);
 
-const certificate = new Proxy({"src":"/pmt/_astro/certificate.ZtZerHwZ.webp","width":300,"height":300,"format":"webp"}, {
+const certificate = new Proxy({"src":"/_astro/certificate.ZtZerHwZ.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -183,7 +183,7 @@ const certificate = new Proxy({"src":"/pmt/_astro/certificate.ZtZerHwZ.webp","wi
 						}
 					});
 
-const pravilo = new Proxy({"src":"/pmt/_astro/pravilo.DZdLgDKR.webp","width":300,"height":300,"format":"webp"}, {
+const pravilo = new Proxy({"src":"/_astro/pravilo.DZdLgDKR.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -196,7 +196,7 @@ const pravilo = new Proxy({"src":"/pmt/_astro/pravilo.DZdLgDKR.webp","width":300
 						}
 					});
 
-const trigger = new Proxy({"src":"/pmt/_astro/trigger.qXWMZ1l9.webp","width":300,"height":300,"format":"webp"}, {
+const trigger = new Proxy({"src":"/_astro/trigger.qXWMZ1l9.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -209,7 +209,7 @@ const trigger = new Proxy({"src":"/pmt/_astro/trigger.qXWMZ1l9.webp","width":300
 						}
 					});
 
-const kinezio = new Proxy({"src":"/pmt/_astro/kinezio.Dj2epsOV.webp","width":300,"height":300,"format":"webp"}, {
+const kinezio = new Proxy({"src":"/_astro/kinezio.Dj2epsOV.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -222,7 +222,7 @@ const kinezio = new Proxy({"src":"/pmt/_astro/kinezio.Dj2epsOV.webp","width":300
 						}
 					});
 
-const veniki = new Proxy({"src":"/pmt/_astro/veniki.szsDIQKm.webp","width":300,"height":300,"format":"webp"}, {
+const veniki = new Proxy({"src":"/_astro/veniki.szsDIQKm.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -235,7 +235,7 @@ const veniki = new Proxy({"src":"/pmt/_astro/veniki.szsDIQKm.webp","width":300,"
 						}
 					});
 
-const perkucia = new Proxy({"src":"/pmt/_astro/perkucia.CLCxnVwt.webp","width":300,"height":300,"format":"webp"}, {
+const perkucia = new Proxy({"src":"/_astro/perkucia.CLCxnVwt.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -276,7 +276,7 @@ const $$FeedbackCarousel = createComponent(async ($$result, $$props, $$slots) =>
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$FeedbackCarousel;
   const { slides } = Astro2.props;
-  const imagesModule = await import('../chunks/index_B9MXDrXV.mjs');
+  const imagesModule = await import('../chunks/index_Dho1c1dA.mjs');
   const images = imagesModule.default || imagesModule;
   const getAvatarImage = (avatarKey) => {
     return images[avatarKey] || null;
@@ -538,7 +538,7 @@ const $$Index = createComponent(($$result, $$props, $$slots) => {
 }, "/Users/macbook/dev/MY/massage-astro/src/pages/index.astro", void 0);
 
 const $$file = "/Users/macbook/dev/MY/massage-astro/src/pages/index.astro";
-const $$url = "/pmt";
+const $$url = "";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

@@ -1,4 +1,4 @@
-const alex_p = new Proxy({"src":"/pmt/_astro/alex_p.CQvUes24.webp","width":300,"height":300,"format":"webp"}, {
+const alex_p = new Proxy({"src":"/_astro/alex_p.CQvUes24.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -11,7 +11,7 @@ const alex_p = new Proxy({"src":"/pmt/_astro/alex_p.CQvUes24.webp","width":300,"
 						}
 					});
 
-const anna_klubnikina = new Proxy({"src":"/pmt/_astro/anna_klubnikina.BUtcONmc.webp","width":300,"height":300,"format":"webp"}, {
+const anna_klubnikina = new Proxy({"src":"/_astro/anna_klubnikina.BUtcONmc.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -24,7 +24,7 @@ const anna_klubnikina = new Proxy({"src":"/pmt/_astro/anna_klubnikina.BUtcONmc.w
 						}
 					});
 
-const diana = new Proxy({"src":"/pmt/_astro/diana.C-oReB-j.webp","width":300,"height":300,"format":"webp"}, {
+const diana = new Proxy({"src":"/_astro/diana.C-oReB-j.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -37,7 +37,7 @@ const diana = new Proxy({"src":"/pmt/_astro/diana.C-oReB-j.webp","width":300,"he
 						}
 					});
 
-const irina = new Proxy({"src":"/pmt/_astro/irina.BT3t7eym.webp","width":300,"height":300,"format":"webp"}, {
+const irina = new Proxy({"src":"/_astro/irina.BT3t7eym.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -50,7 +50,7 @@ const irina = new Proxy({"src":"/pmt/_astro/irina.BT3t7eym.webp","width":300,"he
 						}
 					});
 
-const juju_juliya_nails = new Proxy({"src":"/pmt/_astro/juju_juliya_nails._jj5Pgjc.webp","width":300,"height":300,"format":"webp"}, {
+const juju_juliya_nails = new Proxy({"src":"/_astro/juju_juliya_nails._jj5Pgjc.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -63,7 +63,7 @@ const juju_juliya_nails = new Proxy({"src":"/pmt/_astro/juju_juliya_nails._jj5Pg
 						}
 					});
 
-const kristina = new Proxy({"src":"/pmt/_astro/kristina.C1G9Hsta.webp","width":300,"height":300,"format":"webp"}, {
+const kristina = new Proxy({"src":"/_astro/kristina.C1G9Hsta.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -76,7 +76,7 @@ const kristina = new Proxy({"src":"/pmt/_astro/kristina.C1G9Hsta.webp","width":3
 						}
 					});
 
-const kseniya = new Proxy({"src":"/pmt/_astro/kseniya.DRG-WF2f.webp","width":300,"height":300,"format":"webp"}, {
+const kseniya = new Proxy({"src":"/_astro/kseniya.DRG-WF2f.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -89,7 +89,7 @@ const kseniya = new Proxy({"src":"/pmt/_astro/kseniya.DRG-WF2f.webp","width":300
 						}
 					});
 
-const nataliya = new Proxy({"src":"/pmt/_astro/nataliya.DhSUolHn.webp","width":300,"height":300,"format":"webp"}, {
+const nataliya = new Proxy({"src":"/_astro/nataliya.DhSUolHn.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -102,7 +102,7 @@ const nataliya = new Proxy({"src":"/pmt/_astro/nataliya.DhSUolHn.webp","width":3
 						}
 					});
 
-const svetlana = new Proxy({"src":"/pmt/_astro/svetlana.CC-BFSO6.webp","width":300,"height":300,"format":"webp"}, {
+const svetlana = new Proxy({"src":"/_astro/svetlana.CC-BFSO6.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -115,7 +115,7 @@ const svetlana = new Proxy({"src":"/pmt/_astro/svetlana.CC-BFSO6.webp","width":3
 						}
 					});
 
-const tatiana = new Proxy({"src":"/pmt/_astro/tatiana.4RKwyodr.webp","width":300,"height":300,"format":"webp"}, {
+const tatiana = new Proxy({"src":"/_astro/tatiana.4RKwyodr.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -128,7 +128,7 @@ const tatiana = new Proxy({"src":"/pmt/_astro/tatiana.4RKwyodr.webp","width":300
 						}
 					});
 
-const ts_andreeva = new Proxy({"src":"/pmt/_astro/ts_andreeva.BJbMlffx.webp","width":300,"height":300,"format":"webp"}, {
+const ts_andreeva = new Proxy({"src":"/_astro/ts_andreeva.BJbMlffx.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -141,7 +141,7 @@ const ts_andreeva = new Proxy({"src":"/pmt/_astro/ts_andreeva.BJbMlffx.webp","wi
 						}
 					});
 
-const elena_ki = new Proxy({"src":"/pmt/_astro/9.BHeDTCVM.webp","width":300,"height":300,"format":"webp"}, {
+const elena_ki = new Proxy({"src":"/_astro/9.BHeDTCVM.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -154,7 +154,7 @@ const elena_ki = new Proxy({"src":"/pmt/_astro/9.BHeDTCVM.webp","width":300,"hei
 						}
 					});
 
-const ten = new Proxy({"src":"/pmt/_astro/10.BjskrEIm.webp","width":300,"height":300,"format":"webp"}, {
+const ten = new Proxy({"src":"/_astro/10.BjskrEIm.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -167,7 +167,7 @@ const ten = new Proxy({"src":"/pmt/_astro/10.BjskrEIm.webp","width":300,"height"
 						}
 					});
 
-const five = new Proxy({"src":"/pmt/_astro/5.A4cEvlo-.webp","width":300,"height":300,"format":"webp"}, {
+const five = new Proxy({"src":"/_astro/5.A4cEvlo-.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -180,7 +180,7 @@ const five = new Proxy({"src":"/pmt/_astro/5.A4cEvlo-.webp","width":300,"height"
 						}
 					});
 
-const seven = new Proxy({"src":"/pmt/_astro/7.CgRlyFJD.webp","width":300,"height":300,"format":"webp"}, {
+const seven = new Proxy({"src":"/_astro/7.CgRlyFJD.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -193,7 +193,7 @@ const seven = new Proxy({"src":"/pmt/_astro/7.CgRlyFJD.webp","width":300,"height
 						}
 					});
 
-const eight = new Proxy({"src":"/pmt/_astro/8.B6DNKCdn.webp","width":300,"height":300,"format":"webp"}, {
+const eight = new Proxy({"src":"/_astro/8.B6DNKCdn.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -206,7 +206,7 @@ const eight = new Proxy({"src":"/pmt/_astro/8.B6DNKCdn.webp","width":300,"height
 						}
 					});
 
-const nine = new Proxy({"src":"/pmt/_astro/9.BHeDTCVM.webp","width":300,"height":300,"format":"webp"}, {
+const nine = new Proxy({"src":"/_astro/9.BHeDTCVM.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -219,7 +219,7 @@ const nine = new Proxy({"src":"/pmt/_astro/9.BHeDTCVM.webp","width":300,"height"
 						}
 					});
 
-const rein = new Proxy({"src":"/pmt/_astro/rein.CEyJDSMT.webp","width":300,"height":300,"format":"webp"}, {
+const rein = new Proxy({"src":"/_astro/rein.CEyJDSMT.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -232,7 +232,7 @@ const rein = new Proxy({"src":"/pmt/_astro/rein.CEyJDSMT.webp","width":300,"heig
 						}
 					});
 
-const sahatyi = new Proxy({"src":"/pmt/_astro/sahatyi.zqFHeHen.webp","width":300,"height":300,"format":"webp"}, {
+const sahatyi = new Proxy({"src":"/_astro/sahatyi.zqFHeHen.webp","width":300,"height":300,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);

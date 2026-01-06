@@ -3,7 +3,7 @@ import FeedbackCarousel from "@c/elements/FeedbackCarousel.astro";
 import slides from "@d/dataFeedbacks";
 ---
 
-<section class="section feedback" id="feedbacks">
+<section class="section _feedback" id="feedbacks">
   <h2 class="section__title feedback">Отзывы</h2>
   <p class="section__subtitle feedback">
     Благодарю вас за оказанное мне доверие. Мне очень приятно получать от вас
@@ -14,24 +14,13 @@ import slides from "@d/dataFeedbacks";
 
 <style lang="sass">
   .section
-    &.feedback
-      background: url('/assets/images/background/feedbackH.webp')
-      background-position: center
-      background-size: cover
-      background-repeat: no-repeat
-      @media screen and (max-width: 600px)
-        background: url('/assets/images/background/feedbackV.webp')
-        background-repeat: no-repeat
-        background-position: center
-        background-size: cover
-
-      &__title
-        &.feedback
-          color: var(--color-white)
-      &__subtitle
-        &.feedback
-          width: min(600px, 90vw)
-          margin: 0 auto min(40px, 8vw)
-          text-align: start
-          color: var(--color-white)
+    &__title
+      &.feedback
+        color: var(--color-white)
+    &__subtitle
+      &.feedback
+        width: min(600px, 90vw)
+        margin: 0 auto min(40px, 8vw)
+        text-align: start
+        color: var(--color-white)
 </style>

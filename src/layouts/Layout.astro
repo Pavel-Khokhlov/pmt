@@ -1,3 +1,43 @@
+---
+let isWinter = false;
+const CACHE_KEY = "seasonData";
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
+// Определяем интерфейс
+interface CacheEntry {
+  value: boolean;
+  timestamp: number;
+  expires: number;
+}
+
+interface GlobalCache {
+  [key: string]: CacheEntry;
+}
+
+// Приводим тип
+const globalCache = globalThis as any as { seasonCache?: GlobalCache };
+
+if (!globalCache.seasonCache) {
+  globalCache.seasonCache = {};
+}
+
+const cached = globalCache.seasonCache[CACHE_KEY];
+const now = Date.now();
+
+if (cached && now - cached.timestamp < ONE_DAY_MS) {
+  isWinter = cached.value;
+} else {
+  const currentMonth = new Date().getMonth();
+  isWinter = [0, 1, 11].includes(currentMonth);
+
+  globalCache.seasonCache[CACHE_KEY] = {
+    value: isWinter,
+    timestamp: now,
+    expires: now + ONE_DAY_MS,
+  };
+}
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,11 +45,17 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <script type="module" src="https://unpkg.com/@le-pepe/snow-effect"></script>
     <title>Профессиональный массаж</title>
   </head>
   <body class="body">
     <slot />
   </body>
+  {
+    isWinter && (
+      <snow-effect color="rgba(255, 255, 255, 0.4)" flakes="100" speed="1" />
+    )
+  }
 </html>
 
 <style lang="sass" is:global>
@@ -24,4 +70,50 @@
     background-color: var(--color-floral)
     &._unscroll
       overflow: hidden
+
+  .section
+    &._faq
+      box-sizing: border-box
+      background-color: var(--color-white-smoke)
+      padding: min(50px, 5vw) min(200px, 4vw)
+    &._about
+      width: min(1024px, 90vw)
+      margin: min(70px, 12vw) auto 0
+      box-sizing: border-box
+      background-color: var(--color-floral)
+    &._certificates
+      width: 100%
+      display: flex
+      flex-direction: row
+      justify-content: center
+      gap: min(20px, 3vw)
+      -ms-overflow-style: none
+      scrollbar-width: none
+      overflow-x: auto
+      padding: min(70px, 10vw) min(40px, 3vw)
+
+      @media (max-width: 768px)
+        justify-content: flex-start
+    &._service
+      max-width: 919px
+      width: 94%
+      margin: 0 auto
+      padding: 0
+      display: flex
+      flex-direction: column
+      gap: min(10px, 3vw)
+    &__title
+      &._black
+        color: var(--color-black)
+    &._feedback
+      margin: min(70px, 12vw) auto 0
+      background: url('/assets/images/background/feedbackH.webp')
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+      @media screen and (max-width: 600px)
+        background: url('/assets/images/background/feedbackV.webp')
+        background-repeat: no-repeat
+        background-position: center
+        background-size: cover
 </style>

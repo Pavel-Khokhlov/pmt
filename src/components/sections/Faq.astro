@@ -10,7 +10,10 @@ import faqs from "@d/dataFaqs.js";
         return (
           <li class="faq__item">
             <p class="faq__text question">{faq.question}</p>
-            <p class="faq__text answer">{faq.answer}<span class="faq__data">{faq.time}</span></p>
+            <p class="faq__text answer">
+              {faq.answer}
+              <span class="faq__data">{faq.time}</span>
+            </p>
           </li>
         );
       })
@@ -19,19 +22,6 @@ import faqs from "@d/dataFaqs.js";
 </section>
 
 <style lang="sass" is:global>
-  .section
-    &._faq
-      box-sizing: border-box
-      background-color: var(--color-white-smoke)
-      padding: min(50px, 5vw) min(200px, 4vw)
-    &._about
-      width: min(1024px, 90vw)
-      margin: 0 auto
-      box-sizing: border-box
-      background-color: var(--color-floral)
-    &__title
-      &._black
-        color: var(--color-black)
   .faq
     &__wrapper
       width: min(1000px, 100%)

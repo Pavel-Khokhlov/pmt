@@ -27,7 +27,7 @@ export class ModalSlider {
   initialize() {
     this.modal = document.getElementById("modal-slider");
     if (!this.modal) {
-      console.error("Modal element not found");
+      // console.error("Modal element not found");
       return;
     }
 
@@ -225,7 +225,6 @@ export class ModalSlider {
 
   close() {
     if (!this.modal) return;
-
     this.$body && this.$body.classList.toggle("_unscroll");
     this.modal.classList.remove("active");
     document.body.style.overflow = "";

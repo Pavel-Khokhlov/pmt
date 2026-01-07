@@ -1,14 +1,36 @@
 ---
 import Button from "@c/elements/Button.astro";
+import service from "@d/dataServices.js";
 ---
 
 <section class="section _first" id="main">
   <aside class="main">
-    <Button type="main">{"Массаж"}</Button>
-    <Button type="main">{"Кинезиотейпирование"}</Button>
-    <Button type="main">{"Гвоздестояние"}</Button>
+    {
+      service.map((item: { id: string; button: string }) => (
+        <Button anchor={item.id} type="main">{item.button}</Button>
+      ))
+    }
   </aside>
 </section>
+
+<script define:vars={{ service }}>
+  // Добавляем обработчики после загрузки страницы
+  document.addEventListener('DOMContentLoaded', () => {
+    service.forEach((item) => {
+      const button = document.getElementById(`button-${item.id}`);
+      if (button) {
+        button.addEventListener('click', () => handleClick(item.id));
+      }
+    });
+  });
+
+  function handleClick(id) {
+    const $elQuestion = document.getElementById(`question${id}`);
+    const $elAnswer = document.getElementById(`answer${id}`);
+    $elQuestion && $elQuestion.classList.toggle("_active");
+    $elAnswer && $elAnswer.classList.toggle("_active");
+  }
+</script>
 
 <style lang="sass" is:global>
   .section
@@ -24,23 +46,19 @@ import Button from "@c/elements/Button.astro";
       padding: 0
       // Фон по умолчанию для портретной ориентации
       background-image: url('/assets/images/background/mainV.webp')
-      
+
       // Медиа-запрос для альбомной ориентации
       @media (orientation: landscape) and (min-width: 601px)
         background-image: url('/assets/images/background/mainH.webp')
-      
+
       // Для мобильных устройств можно добавить дополнительные проверки
       @media (max-aspect-ratio: 3/4)
         // Соотношение сторон как у смартфона
         background-image: url('/assets/images/background/mainV.webp')
-      
+
       @media (min-aspect-ratio: 4/3)
         // Соотношение сторон как у планшета/десктопа
         background-image: url('/assets/images/background/mainH.webp')
-      &__text
-        font-size: min(14px, 3vw)
-        line-height: 1.2
-        color: var(--color-black)
   .main
     width: 40%
     height: 100%

@@ -1,8 +1,13 @@
 ---
-const { type } = Astro.props;
+const { type, anchor } = Astro.props;
 ---
 
-<a class={`button ${type && `button__${type}`}`} {...Astro.props}>
+<a
+  id={`button-${anchor}`}
+  href={`#${anchor}`}
+  class={`button ${type && `button__${type}`}`}
+  {...Astro.props}
+>
   <slot />
 </a>
 

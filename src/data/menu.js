@@ -4,7 +4,7 @@ const menuLinks = [
   { id: "911400", title: "Услуги", path: "#service" },
   { id: "911362", title: "Отзывы", path: "#feedbacks" },
   { id: "911364", title: "Вопрос-Ответ", path: "#faq" },
-  { id: "911363", title: "Написать мне", path: "#contacts" },
+  { id: "911363", title: "Контакт", path: "#contacts" },
 ];
 
 export default menuLinks;

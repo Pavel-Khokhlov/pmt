@@ -1,0 +1,102 @@
+---
+import telegramIcon from "../../assets/icons/telegram.svg";
+import emailIcon from "../../assets/icons/email.svg";
+import phoneIcon from "../../assets/icons/phone.svg";
+
+const telegramUsername = "pavel_kh09";
+---
+
+<section class="section _contact" id="contacts">
+  <!-- <h2 class="section__title _black">Контакт</h2> -->
+  <!-- <diplomas-carousel :slides="diplomas" /> -->
+  <div class="contact__wrapper">
+    <img
+      src="../assets/images/background/portrait.webp"
+      class="contact__avatar"
+    />
+    <div class="contact__details">
+      <p class="contact__job">Mассажист</p>
+      <p class="contact__name">Павел Хохлов</p>
+      <!-- E-mail -->
+      <a
+        href="mailto:pavel-kh@mail.ru?subject=Запись на массаж&body=Здравствуйте! Хотел бы записаться к Вам на массаж."
+        class="contact__button outline up"
+      >
+        <img src={emailIcon.src} class="contact__icon" />
+        pavel-kh@mail.ru
+      </a>
+      <!-- Phone -->
+      <a href="tel:+79852515089" class="contact__button outline"
+        ><img src={phoneIcon.src} class="contact__icon" />+7 (985) 251-50-89</a
+      >
+      <!-- Telegram -->
+      <a
+        href={`https://t.me/${telegramUsername}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact__button"
+        >Телеграм<img src={telegramIcon.src} class="contact__icon" /></a
+      >
+    </div>
+  </div>
+</section>
+
+<style lang="sass">
+  .contact
+    &__wrapper
+      position: relative
+      display: flex
+      width: min(600px, 90vw)
+      border-radius: min(12px, 2vw)
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1)
+      margin: 0 auto
+      padding: min(24px, 3vw) min(20px, 2vw)
+      background: var(--color-floral)
+      z-index: 5
+    &__avatar
+      width: min(200px, 40vw)
+      height: min(200px, 40vw)
+    &__details
+      width: 100%
+      display: flex
+      flex-direction: column
+      align-items: center
+    &__job
+      font-size: min(18px, 4vw)
+      font-weight: 700
+    &__name
+      font-size: min(24px, 5vw)
+      font-weight: 700
+      margin-bottom: 10px
+    &__text
+      font-size: 16px
+      font-weight: 400
+    &__button
+      box-sizing: border-box
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: min(8px, 1vw)
+      width: 90%
+      border: none
+      border-radius: 6px
+      background: var(--color-brown)
+      color: var(--color-floral)
+      padding: 10px 0
+      font-size: 16px
+      font-weight: 400
+      cursor: pointer
+      text-decoration: none
+      margin-top: 8px
+      &.outline
+        background: transparent
+        color: var(--color-brown)
+        // border: 1px solid var(--color-brown)
+        padding: 6px 0
+        margin-top: 0
+      &.up
+        margin-top: auto
+    &__icon
+      width: 20px
+      height: 20px
+</style>

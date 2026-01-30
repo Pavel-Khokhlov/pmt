@@ -10,10 +10,14 @@ import faqs from "@d/dataFaqs.js";
         return (
           <li class="faq__item">
             <p class="faq__text question">{faq.question}</p>
-            <p class="faq__text answer">
-              {faq.answer}
+            <ul class="faq__text answer">
+              {faq.answer.map((a) => {
+                return (
+                  <li>{a}</li>
+                )
+              })}
               <span class="faq__data">{faq.time}</span>
-            </p>
+            </ul>
           </li>
         );
       })
@@ -50,6 +54,7 @@ import faqs from "@d/dataFaqs.js";
         line-height: 1.2
         color: var(--color-white)
         background: var(--gd-brown)
+        list-style-type: square
         &::before
           content: ''
           position: absolute
@@ -73,13 +78,14 @@ import faqs from "@d/dataFaqs.js";
         max-width: min(900px, 80vw)
         border-radius: 12px 12px 0 12px
         margin: 0 min(20px, 3vw) 0 0
-        padding-bottom: min(15px, 3vw)
+        padding: 10px min(30px, 5vw) min(15px, 3vw)
         align-self: flex-end
         background-color: var(--color-white)
         font-size: min(20px, 3.5vw)
         font-weight: 400
         line-height: 1.4
         color: var(--color-black)
+        list-style: disc
         &::before
           content: ''
           position: absolute

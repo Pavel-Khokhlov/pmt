@@ -33,32 +33,6 @@ import service from "@d/dataServices.js";
 </script>
 
 <style lang="sass" is:global>
-  .section
-    &._first
-      display: block
-      width: 100vw
-      height: 100vh
-      background: url('/assets/images/background/mainV.webp')
-      background-position: center
-      background-repeat: no-repeat
-      background-size: cover
-      box-sizing: border-box
-      padding: 0
-      // Фон по умолчанию для портретной ориентации
-      background-image: url('/assets/images/background/mainV.webp')
-
-      // Медиа-запрос для альбомной ориентации
-      @media (orientation: landscape) and (min-width: 601px)
-        background-image: url('/assets/images/background/mainH.webp')
-
-      // Для мобильных устройств можно добавить дополнительные проверки
-      @media (max-aspect-ratio: 3/4)
-        // Соотношение сторон как у смартфона
-        background-image: url('/assets/images/background/mainV.webp')
-
-      @media (min-aspect-ratio: 4/3)
-        // Соотношение сторон как у планшета/десктопа
-        background-image: url('/assets/images/background/mainH.webp')
   .main
     width: 40%
     height: 100%

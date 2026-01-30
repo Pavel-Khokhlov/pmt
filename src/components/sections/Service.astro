@@ -72,10 +72,16 @@ import array from "@d/dataServices.js";
       box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1)
       overflow: hidden
       padding: 0 min(40px, 3vw)
+      transition: all 0.5s ease
       &._active
         height: auto
         transition: all 0.5s ease
         padding-bottom: min(30px, 5vw)
+      &:hover
+        transform: scale(1.01)
+        .service__question
+          transition: all 0.5s ease
+          color: var(--color-brand)
     &__button
       position: relative
       margin: 0
@@ -108,12 +114,13 @@ import array from "@d/dataServices.js";
       font-size: min(18px, 4.5vw)
       line-height: 1.3
     &__question
-      color: var(--birka-black)
+      color: var(--color-brown)
       font-size: min(24px, 5vw)
       line-height: 1.5
-      font-weight: 400
+      font-weight: 600
       text-align: start
       pointer-events: none
+      transition: all 0.5s ease
       &._active::after
         opacity: 0
         transform: rotate(90deg)

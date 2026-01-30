@@ -43,7 +43,7 @@ if (cached && now - cached.timestamp < ONE_DAY_MS) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <script type="module" src="https://unpkg.com/@le-pepe/snow-effect"></script>
     <title>Профессиональный массаж</title>
@@ -72,6 +72,31 @@ if (cached && now - cached.timestamp < ONE_DAY_MS) {
       overflow: hidden
 
   .section
+    &._first
+      display: block
+      width: 100vw
+      height: 100vh
+      background: url('/assets/images/background/mainV.webp')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      box-sizing: border-box
+      padding: 0
+      // Фон по умолчанию для портретной ориентации
+      background-image: url('/assets/images/background/mainV.webp')
+
+      // Медиа-запрос для альбомной ориентации
+      @media (orientation: landscape) and (min-width: 601px)
+        background-image: url('/assets/images/background/mainH.webp')
+
+      // Для мобильных устройств можно добавить дополнительные проверки
+      @media (max-aspect-ratio: 3/4)
+        // Соотношение сторон как у смартфона
+        background-image: url('/assets/images/background/mainV.webp')
+
+      @media (min-aspect-ratio: 4/3)
+        // Соотношение сторон как у планшета/десктопа
+        background-image: url('/assets/images/background/mainH.webp')
     &._faq
       box-sizing: border-box
       background-color: var(--color-white-smoke)
@@ -116,4 +141,25 @@ if (cached && now - cached.timestamp < ONE_DAY_MS) {
         background-repeat: no-repeat
         background-position: center
         background-size: cover
+    &._contact
+      position: relative
+      background-image: url('https://static-maps.yandex.ru/1.x/?ll=37.6173,55.7558&z=15&size=600,400&l=map&pt=37.6173,55.7558,pm2rdm')
+      background-size: cover
+      background-position: center
+      // background-attachment: fixed
+      background-repeat: no-repeat
+      &::after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: linear-gradient(
+          to bottom,
+          rgba(61, 38, 41, 0.5),
+          rgba(61, 38, 41, 0.9)
+        )
+        mix-blend-mode: multiply
+        z-index: 2
 </style>
